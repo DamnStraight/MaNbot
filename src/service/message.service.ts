@@ -38,12 +38,9 @@ export async function addMessage(message: Message) {
     content: message.content
   } as AddMessageInput;
 
-  const result = await axios
-    .post(`${config.settings.app.url}/graphql`, {
-      query: mutationAddMessage(payload)
-    });
+  const result = await axios.post(`${config.settings.app.url}/graphql`, {
+    query: mutationAddMessage(payload)
+  });
 
-    return result;
+  return result;
 }
-
-
