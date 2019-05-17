@@ -1,0 +1,8 @@
+settings:
+  bot:
+    token: ""
+    prefix: "!"
+    name: "MaNbot"
+    status: "Status here"
+  app:
+    url: "http://localhost:4000"

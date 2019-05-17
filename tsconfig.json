@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "rootDirs": ["./src", "./"],
+        "lib": ["es6"],
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es2017",
+        "allowJs": true
+    },
+    "exclude": [
+        "./build/*",
+        "./node_modules/*",
+    ],
+    "include": [
+        "./src/**/*.ts"
+    ]
+}
