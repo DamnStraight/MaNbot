@@ -1,6 +1,6 @@
-import { SlashCommandBuilder } from "discord.js";
+import { CacheType, CommandInteraction, SlashCommandBuilder } from "discord.js";
 
-export interface Command {
-    data:  SlashCommandBuilder
-    execute: () => any
+export interface Command<Cached extends CacheType = CacheType> {
+  data: SlashCommandBuilder;
+  execute: (interaction: CommandInteraction<Cached>) => void;
 }
