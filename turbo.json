@@ -1,10 +1,17 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["BOT_TOKEN", "CLIENT_ID"],
+  "globalEnv": [
+    "BOT_TOKEN", 
+    "CLIENT_ID"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
+    },
+    "server#build": {
+      "dependsOn": ["^build"],
+      "env": ["PGUSER", "PGHOST", "PGPASSWORD", "PGDATABASE", "PGPORT"]
     },
     "lint": {
       "outputs": []

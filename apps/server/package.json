@@ -1,0 +1,34 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.ts --files",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamnStraight/MaNbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamnStraight/MaNbot/issues"
+  },
+  "homepage": "https://github.com/DamnStraight/MaNbot#readme",
+  "dependencies": {
+    "fastify": "^4.9.2",
+    "fastify-plugin": "^4.3.0",
+    "pg": "^8.8.0",
+    "ts-sql-query": "^1.40.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/pg": "^8.6.5",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "tsconfig": "*",
+    "typescript": "^4.8.4"
+  }
+}
