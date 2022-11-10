@@ -2,7 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
     "BOT_TOKEN", 
-    "CLIENT_ID"
+    "CLIENT_ID",
+    "NODE_ENV"
   ],
   "pipeline": {
     "build": {

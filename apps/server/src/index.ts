@@ -1,12 +1,14 @@
 import Fastify from "fastify";
+import { bootstrap } from "fastify-decorators";
 
 // ─── Init ──────────────────────────────────────────────────────────────── ✣ ─
 
 const fastify = Fastify({ logger: true });
 
-// ─── Plugins ───────────────────────────────────────────────────────────── ✣ ─
-
-fastify.register(require("./lib/ts-sql-query-plugin"), {});
+fastify.register(bootstrap, {
+  directory: __dirname + '/controllers',
+  mask: /\.controller\./,
+})
 
 // ─── Routes ────────────────────────────────────────────────────────────── ✣ ─
 
