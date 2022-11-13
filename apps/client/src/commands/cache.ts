@@ -13,7 +13,7 @@ async function cacheEmoteExecution(interaction: CommandInteraction) {
 
   if (emojiManager) {
     let allEmotes = "";
-    allEmotes = emojiManager?.cache.map((val, key) => `${val.name},`).join("");
+    allEmotes = emojiManager?.cache.map((val, _) => `${val.name},`).join("");
 
     console.log(allEmotes);
   }

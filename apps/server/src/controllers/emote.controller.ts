@@ -6,10 +6,8 @@ export default class EmoteController {
   @Inject(EmoteService)
   private emoteService!: EmoteService;
 
-  @GET({ url: '/sync' })
+  @GET({ url: "/sync" })
   async syncEmotes() {
-    await this.emoteService.syncEmotes();
-
-    return "Synced"
+    return await this.emoteService.syncEmotes();
   }
 }
