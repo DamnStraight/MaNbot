@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
-import { Command } from "./types/Command";
+import { Command } from "../types/Command";
 
 /**
  * Returns all the commands created in the 'src/commands/*' directory.
- * 
+ *
  * @returns {Command[]}
  */
 export default function loadCommands(): Command[] {

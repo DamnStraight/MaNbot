@@ -1,6 +1,6 @@
 import { REST, Routes } from "discord.js";
 import * as dotenv from "dotenv";
-import loadCommands from "./command-loader";
+import loadCommands from "./util/command-loader";
 
 dotenv.config({ path: "../../.env" });
 

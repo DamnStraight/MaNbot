@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/DamnStraight/MaNbot#readme",
   "dependencies": {
+    "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
     "fastify": "^4.9.2",
     "fastify-decorators": "^3.14.1",
@@ -28,7 +29,10 @@
   "devDependencies": {
     "@types/node": "^18.11.9",
     "@types/pg": "^8.6.5",
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
+    "sinon": "^14.0.2",
     "ts-node": "^10.9.1",
     "tsconfig": "*",
     "typescript": "^4.8.4"
