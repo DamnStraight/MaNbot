@@ -1,9 +1,6 @@
-import * as dotenv from "dotenv";
 import Fastify from "fastify";
 import { bootstrap } from "fastify-decorators";
 import runFixtures from "./datasource/fixture";
-
-dotenv.config({ path: "../../.env" });
 
 const startServer = async () => {
   // ─── Init ──────────────────────────────────────────────────────────────── ✣ ─

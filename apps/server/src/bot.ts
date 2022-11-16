@@ -1,8 +1,5 @@
 import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
-import * as dotenv from "dotenv";
 import loadCommands from "./util/command-loader";
-
-dotenv.config({ path: "../../.env" });
 
 const startBot = async () => {
   const client = new Client({

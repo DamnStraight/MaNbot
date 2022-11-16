@@ -1,12 +1,10 @@
 import * as dotenv from "dotenv";
-import startBot from "./manbot";
+import startBot from "./bot";
 import startServer from "./server";
 
 dotenv.config({ path: "../../.env" });
 
-const startApplication = async () => {
+(async () => {
   await startServer();
   await startBot();
-};
-
-startApplication();
+})();

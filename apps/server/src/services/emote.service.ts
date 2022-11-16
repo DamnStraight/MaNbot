@@ -20,4 +20,18 @@ export default class EmoteService {
         .executeSelectMany();
     });
   }
+
+  async getEmote(imageName: string) {
+    const connection = createConnection();
+
+    return connection.transaction(async () => {
+      return await connection
+        .selectFrom(tEmote)
+        .select({
+          image: tEmote.image,
+        })
+        .where(tEmote.name.equalsInsensitive(imageName))
+        .executeSelectNoneOrOne();
+    });
+  }
 }

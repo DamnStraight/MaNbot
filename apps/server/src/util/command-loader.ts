@@ -10,7 +10,8 @@ import { Command } from "../types/Command";
 export default function loadCommands(): Command[] {
   let commands: Command[] = [];
 
-  const commandPath = path.join(__dirname, "commands");
+  const commandPath = path.resolve(__dirname, "../commands");
+
   const commandFiles = fs
     .readdirSync(commandPath)
     .filter((file: string) => file.endsWith(".ts"));
