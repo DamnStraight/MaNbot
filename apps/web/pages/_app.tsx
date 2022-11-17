@@ -1,10 +1,18 @@
 import { MantineProvider } from "@mantine/core";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider
+} from "@tanstack/react-query";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import React from "react";
 import "../styles/globals.css";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
+
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <>
@@ -23,7 +31,11 @@ export default function App(props: AppProps) {
           colorScheme: "dark",
         }}
       >
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Component {...pageProps} />
+          </Hydrate>
+        </QueryClientProvider>
       </MantineProvider>
     </>
   );
