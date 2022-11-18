@@ -1,5 +1,4 @@
 import { createConnection } from "./connection";
-import { tEmote, tEmoteVariant, tVariant } from "./definitions";
 
 export default async function runFixtures() {
   const connection = createConnection();
@@ -40,31 +39,6 @@ export default async function runFixtures() {
         image text NOT NULL
       )
     `);
-
-      await connection
-        .insertInto(tEmote)
-        .values({
-          name: "emoneySwag",
-          discordId: "172522267144437777",
-          image: "test",
-        })
-        .executeInsert();
-
-      await connection
-        .insertInto(tVariant)
-        .values({
-          name: "Christmas",
-        })
-        .executeInsert();
-
-      await connection
-        .insertInto(tEmoteVariant)
-        .values({
-          emoteId: 1,
-          variantId: 1,
-          image: "test2",
-        })
-        .executeInsert();
     }
 
     await connection.commit();

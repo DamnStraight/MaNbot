@@ -1,24 +1,26 @@
 import { Service } from "fastify-decorators";
 import { createConnection } from "../datasource/connection";
-import { tEmote, tEmoteVariant, tVariant } from "../datasource/definitions";
+import { tEmote } from "../datasource/definitions";
 
 @Service()
 export default class EmoteService {
-  async syncEmotes() {
+  async getEmotes() {
     const connection = createConnection();
 
-    return connection.transaction(async () => {
+    const result = await connection.transaction(async () => {
       return await connection
         .selectFrom(tEmote)
-        .innerJoin(tEmoteVariant)
-        .on(tEmoteVariant.emoteId.equals(tEmote.id))
-        .innerJoin(tVariant)
-        .on(tVariant.id.equals(tEmoteVariant.emoteId))
         .select({
           name: tEmote.name,
         })
         .executeSelectMany();
     });
+
+    return result.map(({ name }) => ({
+      name,
+      // TODO Move this to a URL env variable
+      url: `http://127.0.0.1:3001/emote/${name}`,
+    }));
   }
 
   async getEmote(imageName: string) {

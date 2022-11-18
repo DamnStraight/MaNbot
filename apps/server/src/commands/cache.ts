@@ -29,7 +29,7 @@ async function downloadEmote(url: string) {
   return Buffer.from(buffer).toString("base64");
 }
 
-async function saveEmotes(
+export async function saveEmotes(
   emotes: Collection<string, GuildEmoji>,
   interaction: CommandInteraction
 ) {
@@ -61,6 +61,10 @@ async function saveEmotes(
 }
 
 async function cacheEmoteExecution(interaction: CommandInteraction) {
+  if (interaction.member?.user.id !== "122512846041907203") {
+    return await interaction.reply("NOIDONTTHINKSO");
+  }
+
   const emojiManager = interaction.guild?.emojis;
 
   await interaction.reply("Caching emotes...");

@@ -28,7 +28,7 @@ const startServer = async () => {
 
   // ─── Server ────────────────────────────────────────────────────────────── ✣ ─
 
-  fastify.listen({ port: 3000 }, (err, address) => {
+  fastify.listen({ port: 3001 }, (err, address) => {
     if (err) throw err;
 
     console.log(`Server listening on ${address}`);

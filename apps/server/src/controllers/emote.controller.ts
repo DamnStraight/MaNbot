@@ -8,9 +8,14 @@ export default class EmoteController {
   @Inject(EmoteService)
   private emoteService!: EmoteService;
 
-  @GET({ url: "/sync" })
-  async syncEmotes() {
-    return await this.emoteService.syncEmotes();
+  @GET({ url: "/" })
+  async fetchEmotes(_: FastifyRequest, reply: FastifyReply) {
+    const result = await this.emoteService.getEmotes();
+
+    await reply
+      .header("Access-Control-Allow-Origin", "*")
+      .code(200)
+      .send(result);
   }
 
   @GET({ url: "/:name" })
