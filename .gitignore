@@ -35,3 +35,7 @@ yarn-error.log*
 
 # Sqlite3
 *.db
+
+# Exclude scraped user chat history
+apps/server/chatlogs/*
+markovpy/models/*
