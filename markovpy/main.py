@@ -5,6 +5,8 @@ from flask import request
 
 app = Flask(__name__)
 
+# Loads selected user scrapings into Markov chain models to serve randomized messages
+
 userBots = {
     "122512846041907203": "DamnStraight",
     "111815854492061696": "Renbot",
