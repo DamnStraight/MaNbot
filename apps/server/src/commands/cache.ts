@@ -2,11 +2,12 @@ import {
   Collection,
   CommandInteraction,
   GuildEmoji,
-  SlashCommandBuilder,
+  SlashCommandBuilder
 } from "discord.js";
 import { setTimeout as wait } from "timers/promises";
 import { createConnection } from "../datasource/connection";
 import { tEmote } from "../datasource/definitions";
+import { isAuthorized } from "../util/constants";
 
 // ─── Command Details ───────────────────────────────────────────────────── ✣ ─
 
@@ -61,7 +62,7 @@ export async function saveEmotes(
 }
 
 async function cacheEmoteExecution(interaction: CommandInteraction) {
-  if (interaction.member?.user.id !== "122512846041907203") {
+  if (!isAuthorized(interaction.member?.user.id)) {
     return await interaction.reply("NOIDONTTHINKSO");
   }
 
