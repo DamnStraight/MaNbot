@@ -3,7 +3,7 @@ import {
   CommandInteraction,
   Message,
   SlashCommandBuilder,
-  TextBasedChannel,
+  TextChannel,
   User
 } from "discord.js";
 
@@ -33,7 +33,7 @@ const SPECIAL_CHARACTER_REGEX = new RegExp(
 );
 
 async function crawlUserMessages(
-  channel: TextBasedChannel,
+  channel: TextChannel,
   target: User,
   messageCount: number
 ) {
@@ -90,7 +90,7 @@ async function messageHistoryExecution(interaction: CommandInteraction) {
 
   await interaction.deferReply();
   try {
-    await crawlUserMessages(channel, target, 10000);
+    await crawlUserMessages(channel as any, target, 10000);
   } catch (e) {
     console.log("Error: ", e);
   }

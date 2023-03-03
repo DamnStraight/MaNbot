@@ -12,6 +12,8 @@ export default function loadCommands(): Command[] {
 
   const commandPath = path.resolve(__dirname, "../commands");
 
+  console.log(commandPath);
+
   const commandFiles = fs
     .readdirSync(commandPath)
     .filter((file: string) => file.endsWith(".ts"));

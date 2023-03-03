@@ -2,11 +2,15 @@ import { REST, Routes } from "discord.js";
 import * as dotenv from "dotenv";
 import loadCommands from "./util/command-loader";
 
-dotenv.config({ path: "../../.env" });
+dotenv.config();
+// dotenv.config({ path: "../.env" });
 
 const commands = loadCommands();
 
-const jsonCommands = commands.map((command) => command.data.toJSON());
+const jsonCommands = commands.map((command) => { 
+  console.log(command);
+  return command.data.toJSON() 
+});
 
 // ─── Push Commands To Discord ──────────────────────────────────────────── ✣ ─
 

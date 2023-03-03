@@ -28,26 +28,36 @@ const chatBotCommand = new SlashCommandBuilder()
 
 // ─── Command Execution ─────────────────────────────────────────────────── ✣ ─
 
+export const getMessage = async (
+  botId: string,
+  seed: string = "",
+  size: number = 200
+) => {
+  try {
+    const response = await fetch(
+      // Set a env url for this
+      `http://127.0.0.1:5000/generateMessage?${querystring.stringify({
+        botId,
+        size,
+        seed,
+      })}`
+    );
+
+    return await response.json();
+  } catch {
+    return "Internal server error";
+  }
+};
+
 async function chatBotExecution(interaction: ChatInputCommandInteraction) {
   const botId = interaction.options.getString("user");
   const maybeSeed = interaction.options.getString("initial")?.trim();
 
-  if (maybeSeed && /\s/.test(maybeSeed)) {
-    return await interaction.reply(
-      `Initial value should be a single word, you entered "${maybeSeed}". :face_with_raised_eyebrow:`
-    );
+  if (!botId) {
+    return "Internal Server Error";
   }
 
-  const response = await fetch(
-    // Set a env url for this
-    `http://127.0.0.1:5000/generateMessage?${querystring.stringify({
-      botId,
-      size: 200,
-      seed: maybeSeed,
-    })}`
-  );
-
-  const message = await response.json();
+  const message = await getMessage(botId, maybeSeed);
 
   interaction.reply(message);
 }
